@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<script>
+						
+			var targetPosition = 0;
+			var layout = {
+				yaxis: {
+					autorange: false,
+					range: [-1000, 1000],
+					type: 'linear'
+				}
+			};
+			var plotData = [
+				{
+					x: [],
+					y: [],
+					type: 'scatter'
+				},
+				{
+					x: [],
+					y: [],
+					type: 'scatter'
+				}
+			];
+					
+			function updatePIDParamsSetters(params) {
+				document.getElementById("setKp").value = params[0];
+				document.getElementById("setKi").value = params[1];
+				document.getElementById("setKd").value = params[2];
+			}
+		
+			window.onload = async function() {
+				const params = await getPIDParams();
+				updatePIDParamsSetters(params);
+				setInterval(getPosition, 100);
+			};
+		
+			function setPosition() {
+				var xhttp = new XMLHttpRequest();
+				const position = document.getElementById("target").value;
+				targetPosition = position;
+				xhttp.open("GET", "http://localhost:3000/api/set_position/?parameter=" + position, true);
+				xhttp.send();
+			}
+			
+			function setPID(name) {
+				var xhttp = new XMLHttpRequest();
+				const coeff = document.getElementById("set" + name).value;
+				xhttp.onreadystatechange = async function() {
+					if (this.readyState == 4 && this.status == 200) {
+						const params = await getPIDParams();
+						updatePIDParamsSetters(params);
+					}
+				};
+				xhttp.open("GET", "http://localhost:3000/api/set_" + name + "/?parameter=" + coeff, true);
+				xhttp.send();
+			}
+			
+			function setKp() {
+				setPID("Kp");
+			}
+			
+			function setKi() {
+				setPID("Ki");
+			}
+			
+			function setKd() {
+				setPID("Kd");
+			}
+			
+			async function getPIDParams() {
+				return new Promise((resolve, reject) => {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							const regex = /PID parameters: Kp: (.*), Ki: (.*), Kd: (.*)/
+							const result = regex.exec(this.responseText);
+							console.log(result);
+							document.getElementById("Kp").innerHTML = result[1];
+							document.getElementById("Ki").innerHTML = result[2];
+							document.getElementById("Kd").innerHTML = result[3];
+							return resolve(result.splice(1,3));
+						}
+					};
+					xhttp.open("GET", "http://localhost:3000/api/PID_get_parameters", true);
+					xhttp.send();
+				});
+			}
+			
+			function getPosition() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("position").innerHTML = this.responseText;
+						plotData[0].x.push(new Date().toISOString());
+						plotData[0].y.push(parseInt(this.responseText.substring(4)));
+						if (plotData[0].x.length > 200) plotData[0].x.shift();
+						if (plotData[0].y.length > 200) plotData[0].y.shift();
+						plotData[1].x.push(new Date().toISOString());
+						plotData[1].y.push(targetPosition);
+						if (plotData[1].x.length > 200) plotData[1].x.shift();
+						if (plotData[1].y.length > 200) plotData[1].y.shift();
+
+						Plotly.newPlot('plot', plotData, layout);
+					}
+				};
+				xhttp.open("GET", "http://localhost:3000/api/get_position", true);
+				xhttp.send();
+			}
+			
+		</script>
+	<head>
+	
+	<body>
+		<h1>DC motor PID positioning</h1>
+		<div id="status">
+			<h2>Current position</h2>
+			<div>
+				<p id=position>No data received yet</p>
+			</div>			
+			<h2>Current PID parameters</h2>
+			<div>
+				<b>Kp:</b> <p id=Kp>No data received yet</p>
+				<b>Ki:</b> <p id=Ki>No data received yet</p>
+				<b>Kd:</b> <p id=Kd>No data received yet</p>
+			</div>
+		</div>
+		<div>
+			<h2>Setting target position</h2>
+			<input type="number" id="target" value="0">
+			<button onclick="setPosition()" type="button">set target</button>
+		</div>		
+		<div>
+			<h2>Setting PID parameters</h2>
+			<input type="number" id="setKp" value="0">
+			<button onclick="setKp()" type="button">set Kp</button><br>
+			<input type="number" id="setKi" value="0">
+			<button onclick="setKi()" type="button">set Ki</button><br>
+			<input type="number" id="setKd" value="0">
+			<button onclick="setKd()" type="button">set Kd</button>
+		</div>
+		<div id=plot>
+		</div>
+	</body>
+</html>

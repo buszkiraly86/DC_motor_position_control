@@ -1,0 +1,300 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Zoltan Kun, no, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.26.2.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DCM.DLL V1.17.2.0
+Target DLL:      UL2CM3.DLL V1.161.6.0
+Dialog DLL:      TCM.DLL V1.36.1.0
+ 
+<h2>Project:</h2>
+C:\Users\Zoltan\Documents\DC_motor_position_control\DC_motor_position_control.uvprojx
+Project File Date:  04/06/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling commands.c...
+comms.h(6): warning:  #1295-D: Deprecated declaration comms_initialize - give arg types
+  int comms_initialize();
+comms.h(7): warning:  #1295-D: Deprecated declaration comms_process - give arg types
+  int comms_process();
+encoder.h(4): warning:  #1295-D: Deprecated declaration encoder_initialize - give arg types
+  void encoder_initialize();
+encoder.h(5): warning:  #1295-D: Deprecated declaration encoder_get_position - give arg types
+  int encoder_get_position();
+encoder.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+motor.h(6): warning:  #1295-D: Deprecated declaration motor_initialize - give arg types
+  void motor_initialize();
+motor.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+PID.h(4): warning:  #1295-D: Deprecated declaration PID_initialize - give arg types
+  void PID_initialize();
+PID.h(5): warning:  #1295-D: Deprecated declaration PID_process - give arg types
+  void PID_process();
+PID.h(7): warning:  #1295-D: Deprecated declaration PID_stop - give arg types
+  int PID_stop();
+PID.h(8): warning:  #1295-D: Deprecated declaration PID_start - give arg types
+  int PID_start();
+PID.h(12): warning:  #1295-D: Deprecated declaration PID_get_parameters - give arg types
+  int PID_get_parameters();
+PID.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+commands.c(7): warning:  #223-D: function "printf" declared implicitly
+  		printf("pos: %d\r\n", encoder_get_position());
+commands.c(12): warning:  #223-D: function "sscanf" declared implicitly
+  		sscanf(argv[1], "%d", &target_position);
+commands.c(14): warning:  #223-D: function "printf" declared implicitly
+  		printf("setting target position to %d...\r\n", target_position);
+commands.c(24): warning:  #223-D: function "sscanf" declared implicitly
+  		sscanf(argv[1], "%d", &target_pwm);
+commands.c(28): warning:  #223-D: function "printf" declared implicitly
+  		printf("pwm set\r\n");
+commands.c(33): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID stopped\r\n");
+commands.c(35): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID could not be stopped\r\n");
+commands.c(40): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID started\r\n");
+commands.c(42): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID could not be started\r\n");
+commands.c(47): warning:  #223-D: function "sscanf" declared implicitly
+  		sscanf(argv[1], "%lf", &Kp);
+commands.c(49): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID Kp set to %lf\r\n", Kp);
+commands.c(51): warning:  #223-D: function "printf" declared implicitly
+  				printf("Failed to set Kp\r\n");
+commands.c(56): warning:  #223-D: function "sscanf" declared implicitly
+  		sscanf(argv[1], "%lf", &Ki);
+commands.c(58): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID Ki set to %lf\r\n", Ki);
+commands.c(60): warning:  #223-D: function "printf" declared implicitly
+  				printf("Failed to set Kp\r\n");
+commands.c(65): warning:  #223-D: function "sscanf" declared implicitly
+  		sscanf(argv[1], "%lf", &Kd);
+commands.c(67): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID Kd set to %lf\r\n", Kd);
+commands.c(69): warning:  #223-D: function "printf" declared implicitly
+  				printf("Failed to set Kp\r\n");
+commands.c(75): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID parameters: Kp: %lf, Ki: %lf, Kd: %lf\r\n", Kp, Ki, Kd);
+commands.c(77): warning:  #223-D: function "printf" declared implicitly
+  				printf("PID parameters could not be retrieved\r\n");
+commands.c(92): warning:  #1-D: last line of file ends without a newline
+  unsigned int nr_of_commands = sizeof(commands)/sizeof(command);
+commands.c: 34 warnings, 0 errors
+compiling main.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+comms.h(6): warning:  #1295-D: Deprecated declaration comms_initialize - give arg types
+  int comms_initialize();
+comms.h(7): warning:  #1295-D: Deprecated declaration comms_process - give arg types
+  int comms_process();
+encoder.h(4): warning:  #1295-D: Deprecated declaration encoder_initialize - give arg types
+  void encoder_initialize();
+encoder.h(5): warning:  #1295-D: Deprecated declaration encoder_get_position - give arg types
+  int encoder_get_position();
+encoder.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+motor.h(6): warning:  #1295-D: Deprecated declaration motor_initialize - give arg types
+  void motor_initialize();
+motor.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+PID.h(4): warning:  #1295-D: Deprecated declaration PID_initialize - give arg types
+  void PID_initialize();
+PID.h(5): warning:  #1295-D: Deprecated declaration PID_process - give arg types
+  void PID_process();
+PID.h(7): warning:  #1295-D: Deprecated declaration PID_stop - give arg types
+  int PID_stop();
+PID.h(8): warning:  #1295-D: Deprecated declaration PID_start - give arg types
+  int PID_start();
+PID.h(12): warning:  #1295-D: Deprecated declaration PID_get_parameters - give arg types
+  int PID_get_parameters();
+PID.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c(41): warning:  #223-D: function "printf" declared implicitly
+  				printf("ctr: %d\r\n", encoder_get_position());
+main.c(94): warning:  #1-D: last line of file ends without a newline
+  }
+main.c(38): warning:  #177-D: function "commsTask2"  was declared but never referenced
+  static void commsTask2(void *pvParameters) {
+main.c: 17 warnings, 0 errors
+compiling list.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\list.c: 1 warning, 0 errors
+compiling queue.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\queue.c: 1 warning, 0 errors
+compiling comms.c...
+comms.h(6): warning:  #1295-D: Deprecated declaration comms_initialize - give arg types
+  int comms_initialize();
+comms.h(7): warning:  #1295-D: Deprecated declaration comms_process - give arg types
+  int comms_process();
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+comms.c(141): warning:  #167-D: argument of type "const char *" is incompatible with parameter of type "char *__restrict__"
+      char *pch = strtok (cmd, " ");
+comms.c(136): warning:  #177-D: variable "start_position"  was declared but never referenced
+      const char* start_position = cmd;
+comms.c: 5 warnings, 0 errors
+compiling tasks.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\tasks.c: 1 warning, 0 errors
+compiling timers.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\timers.c: 1 warning, 0 errors
+compiling heap_1.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\portable\MemMang\heap_1.c: 1 warning, 0 errors
+compiling port.c...
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+FreeRTOS_Source\portable\RVDS\ARM_CM3\port.c: 1 warning, 0 errors
+compiling PID.c...
+PID.h(4): warning:  #1295-D: Deprecated declaration PID_initialize - give arg types
+  void PID_initialize();
+PID.h(5): warning:  #1295-D: Deprecated declaration PID_process - give arg types
+  void PID_process();
+PID.h(7): warning:  #1295-D: Deprecated declaration PID_stop - give arg types
+  int PID_stop();
+PID.h(8): warning:  #1295-D: Deprecated declaration PID_start - give arg types
+  int PID_start();
+PID.h(12): warning:  #1295-D: Deprecated declaration PID_get_parameters - give arg types
+  int PID_get_parameters();
+PID.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\FreeRTOS_Source\include\../../FreeRTOSConfig.h(80): warning:  #1-D: last line of file ends without a newline
+  #endif /* FREERTOS_CONFIG_H */
+encoder.h(4): warning:  #1295-D: Deprecated declaration encoder_initialize - give arg types
+  void encoder_initialize();
+encoder.h(5): warning:  #1295-D: Deprecated declaration encoder_get_position - give arg types
+  int encoder_get_position();
+encoder.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+motor.h(6): warning:  #1295-D: Deprecated declaration motor_initialize - give arg types
+  void motor_initialize();
+motor.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+PID.c(146): warning:  #1-D: last line of file ends without a newline
+  }
+PID.c: 13 warnings, 0 errors
+compiling encoder.c...
+encoder.c(96): warning:  #1-D: last line of file ends without a newline
+  }
+encoder.c: 1 warning, 0 errors
+compiling motor.c...
+motor.h(6): warning:  #1295-D: Deprecated declaration motor_initialize - give arg types
+  void motor_initialize();
+motor.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+encoder.h(4): warning:  #1295-D: Deprecated declaration encoder_initialize - give arg types
+  void encoder_initialize();
+encoder.h(5): warning:  #1295-D: Deprecated declaration encoder_get_position - give arg types
+  int encoder_get_position();
+encoder.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+motor.c(83): warning:  #1-D: last line of file ends without a newline
+  }
+motor.c: 6 warnings, 0 errors
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+assembling startup_stm32f10x_md_vl.s...
+compiling DMA_STM32F10x.c...
+compiling GPIO_STM32F10x.c...
+compiling system_stm32f10x.c...
+linking...
+Program Size: Code=28272 RO-data=976 RW-data=224 ZI-data=7504  
+".\Objects\test2.axf" - 0 Error(s), 82 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: DMA Version: 1.2
+   * Component: GPIO Version: 1.3
+   * Component: Startup Version: 1.0.0
+   * Component: EXTI Version: 3.5.0
+   * Component: Framework Version: 3.5.1
+   * Component: GPIO Version: 3.5.0
+   * Component: RCC Version: 3.5.0
+   * Component: TIM Version: 3.5.0
+   * Component: USART Version: 3.5.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\STM32F100RB
+  .\RTE\_Target_1
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\RTE_Driver
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: Keil::Device:DMA:1.2
+      Include file:  RTE_Driver\DMA_STM32F10x.h
+      Source file:   RTE_Driver\DMA_STM32F10x.c
+
+   * Component: Keil::Device:GPIO:1.3
+      Include file:  RTE_Driver\GPIO_STM32F10x.h
+      Source file:   RTE_Driver\GPIO_STM32F10x.c
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\startup_stm32f10x_md_vl.s
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+
+   * Component: Keil::Device:StdPeriph Drivers:EXTI:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
+
+   * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+
+   * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+
+   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
+
+   * Component: Keil::Device:StdPeriph Drivers:TIM:3.5.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
+
+   * Component: Keil::Device:StdPeriph Drivers:USART:3.5.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
